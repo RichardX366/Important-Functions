@@ -10,5 +10,11 @@ function circleIntersection(x1,y1,r1, x2,y2,r2) {
   var fx2 = (-b - n)/(2*a);
   var fy1 = (2*x2*fx1 - 2*x1*fx1 + d)/e;
   var fy2 = (2*x2*fx2 - 2*x1*fx2 + d)/e;
-  return [[fx1, fy1], [fx2, fy2]];
+  if (isNaN(fx1)) {
+    return false;
+  } else if (fx1 === fx2 && fy1 === fy2) {
+    return [fx1, fy1];
+  } else {
+    return [[fx1, fy1], [fx2, fy2]];
+  }
 }
