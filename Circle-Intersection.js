@@ -8,8 +8,15 @@ function circleIntersection(x1,y1,r1, x2,y2,r2) {
   let n = Math.sqrt(b**2 - 4*a*c);
   var fx1 = (-b + n)/(2*a);
   var fx2 = (-b - n)/(2*a);
-  var fy1 = (2*x2*fx1 - 2*x1*fx1 + d)/e;
-  var fy2 = (2*x2*fx2 - 2*x1*fx2 + d)/e;
+  var fy1, fy2;
+  if (e) {
+    fy1 = (2*x2*fx1 - 2*x1*fx1 + d)/e;
+    fy2 = (2*x2*fx2 - 2*x1*fx2 + d)/e;
+  } else {
+    let c = (fx1 - x1)**2 + y1**2 - r1**2;
+    fy1 = (2*y1 + Math.sqrt((2*y1)**2 - 4*c)) / 2;
+    fy2 = -fy1;
+  }
   if (isNaN(fx1)) {
     return false;
   } else if (fx1 === fx2 && fy1 === fy2) {
